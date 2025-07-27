@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Recommendations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('/static/images/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .main-container {
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .recommendation-box {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 20px 30px;
+            width: 85vw;
+            max-width: 1000px;
+            margin-bottom: 30px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+
+        .recommendation-box h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .recommendation-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .recommendation-box ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .recommendation-box ul li i {
+            margin-right: 10px;
+            color: #00cec9;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #dff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .recommendation-box {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .recommendation-box h2 {
+                font-size: 20px;
+            }
+
+            .recommendation-box ul li {
+                font-size: 14px;
+            }
+
+            .footer {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .recommendation-box {
+                padding: 15px;
+            }
+
+            .recommendation-box h2 {
+                font-size: 18px;
+            }
+
+            .recommendation-box ul li {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Health Recommendations for {{ name }}</h1>
+
+        <div class="recommendation-box">
+            <h2><i class="fas fa-thumbs-up"></i> DO Recommendations</h2>
+            <ul>
+                {% for item in do_recommendations %}
+                    <li><i class="fas fa-check-circle"></i> {{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="recommendation-box">
+            <h2><i class="fas fa-thumbs-down"></i> DON'T Recommendations</h2>
+            <ul>
+                {% for item in dont_recommendations %}
+                    <li><i class="fas fa-times-circle"></i> {{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="recommendation-box">
+            <h2><i class="fas fa-utensils"></i> Diet Recommendations</h2>
+            <ul>
+                {% for item in diet_recommendations %}
+                    <li><i class="fas fa-apple-alt"></i> {{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="recommendation-box">
+            <h2><i class="fas fa-dumbbell"></i> Exercise Recommendations</h2>
+            <ul>
+                {% for item in exercise_recommendations %}
+                    <li><i class="fas fa-running"></i> {{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <a href="{{ url_for('ar_exercise') }}">View Exercises →</a>
+        </div>
+        
+        
+
+        <div class="footer">
+            <a href="{{ url_for('home') }}">← Back to Home</a>
+            
+        </div>
+    </div>
+</body>
+</html>

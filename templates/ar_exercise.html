@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AR Exercise</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('/static/images/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    iframe {
+      width: 80%;
+      height: 50vh;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #dff;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    
+
+   
+
+    @media (max-width: 768px) {
+      iframe {
+        width: 90%;
+        height: 40vh;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .footer {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      iframe {
+        width: 95%;
+        height: 35vh;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .footer {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Augmented Reality Exercise</h1>
+
+  <!-- Embed existing static/ar/home.html with smaller size -->
+  <iframe src="{{ url_for('static', filename='ar/home.html') }}"></iframe>
+
+  <div class="footer">
+    <a href="{{ url_for('recommendation') }}">← Back to Recommendations</a>
+  </div>
+
+  
+</body>
+</html>

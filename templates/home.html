@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Health Predictor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('/static/images/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .main-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 48px;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+        }
+
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .box {
+            width: 250px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .box:hover {
+            transform: scale(1.07);
+            background: rgba(255, 255, 255, 0.2);
+            color: #000;
+            box-shadow: 0 16px 35px rgba(255,255,255,0.6);
+        }
+
+        .box i {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media screen and (max-width: 768px) {
+            .box {
+                width: 200px;
+                height: 160px;
+                font-size: 18px;
+            }
+
+            .box i {
+                font-size: 30px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h2 {
+                font-size: 36px;
+            }
+
+            .box {
+                width: 160px;
+                height: 140px;
+                font-size: 16px;
+            }
+
+            .box i {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h2>Welcome to Health Predictor</h2>
+        <div class="box-container">
+            <div class="box" onclick="location.href='/profile'">
+                <i class="fas fa-user"></i>
+                Profile
+            </div>
+            <div class="box" onclick="location.href='/predict'">
+                <i class="fas fa-stethoscope"></i>
+                Predict
+            </div>
+            <div class="box" onclick="location.href='/history'">
+                <i class="fas fa-history"></i>
+                History
+            </div>
+            <div class="box" onclick="location.href='/recommendation'">
+                <i class="fas fa-apple-alt"></i>
+                Recommendation
+            </div>
+            <div class="box" onclick="location.href='/logout'">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction History | Health Predictor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('/static/images/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 42px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #fff;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        th {
+            background-color: rgba(0, 123, 255, 0.4);
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .high {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .normal {
+            color: #6eff9e;
+            font-weight: bold;
+        }
+
+        .low {
+            color: #4dd0e1;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #dff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            th, td {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            .footer {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction History</h1>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Timestamp</th>
+                <th>Glucose</th>
+                <th>Systolic</th>
+                <th>Diastolic</th>
+                <th>Heart Rate</th>
+                <th>Temperature</th>
+                <th>SPO2</th>
+                <th>Pred. Glucose</th>
+                <th>Pred. Systolic</th>
+                <th>Pred. Diastolic</th>
+                <th>Pred. Heart Rate</th>
+                <th>Pred. Temperature</th>
+                <th>Pred. SPO2</th>
+            </tr>
+            {% for row in records %}
+            <tr>
+                <td>{{ row[12] }}</td>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[7] }}</td>
+                <td>{{ row[8] }}</td>
+
+                <td class="{% if 'high' in row[3]|lower %}high{% elif 'normal' in row[3]|lower %}normal{% elif 'low' in row[3]|lower %}low{% endif %}">
+                    {{ row[3] }}
+                </td>
+                <td class="{% if 'high' in row[4]|lower %}high{% elif 'normal' in row[4]|lower %}normal{% elif 'low' in row[4]|lower %}low{% endif %}">
+                    {{ row[4] }}
+                </td>
+                <td class="{% if 'high' in row[5]|lower %}high{% elif 'normal' in row[5]|lower %}normal{% elif 'low' in row[5]|lower %}low{% endif %}">
+                    {{ row[5] }}
+                </td>
+                <td class="{% if 'high' in row[9]|lower %}high{% elif 'normal' in row[9]|lower %}normal{% elif 'low' in row[9]|lower %}low{% endif %}">
+                    {{ row[9] }}
+                </td>
+                <td class="{% if 'high' in row[10]|lower %}high{% elif 'normal' in row[10]|lower %}normal{% elif 'low' in row[10]|lower %}low{% endif %}">
+                    {{ row[10] }}
+                </td>
+                <td class="{% if 'high' in row[11]|lower %}high{% elif 'normal' in row[11]|lower %}normal{% elif 'low' in row[11]|lower %}low{% endif %}">
+                    {{ row[11] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="footer">
+        <a href="{{ url_for('home') }}">← Back to Home</a> 
+    
+    </div>
+
+</body>
+</html>

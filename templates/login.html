@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Health Predictor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: url('/static/images/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.08); /* more transparent */
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 45px 40px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1.2s ease;
+            width: 420px; /* wider */
+            color: #fff;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-size: 30px;
+            animation: slideDown 0.6s ease;
+        }
+
+        .login-container label {
+            float: left;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            font-size: 15px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 12px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .login-container input:focus {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            background: #00c6ff;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background: #0072ff;
+        }
+
+        .login-container p {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-container a {
+            color: #fffd;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .login-container a:hover {
+            color: #ddd;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Welcome Back 👋</h2>
+        <form method="POST" action="/login">
+            <label>Username</label>
+            <input type="text" name="username" required>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/signup">Signup here</a></p>
+    </div>
+</body>
+</html>

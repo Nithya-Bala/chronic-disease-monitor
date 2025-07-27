@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Interactive Workout Scene</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <style>
+      body { margin: 0; background: #000; }
+    </style>
+  </head>
+  <body>
+    <a-scene shadow="type: pcfsoft" renderer="colorManagement: true; shadowMap.enabled: true">
+      
+      <!-- Background Sky -->
+      <a-sky color="#1e1e2f"></a-sky>
+
+      <!-- Lights -->
+      <a-entity light="type: ambient; intensity: 0.6"></a-entity>
+      <a-entity 
+        light="type: directional; color: #fff; intensity: 0.8; castShadow: true" 
+        position="3 10 5" 
+        rotation="-45 0 0">
+      </a-entity>
+
+      <!-- Ground -->
+      <a-plane 
+        rotation="-90 0 0" 
+        width="50" 
+        height="50" 
+        color="#3a3a3a" 
+        shadow="receive: true">
+      </a-plane>
+
+      <!-- 3D Character -->
+      <a-entity 
+        gltf-model="/static/ar/pushup.glb" 
+        position="0 0 0" 
+        scale="1 1 1" 
+        animation-mixer 
+        shadow="cast: true">
+      </a-entity>
+
+      <!-- Camera with look and movement controls -->
+      <a-entity 
+        camera 
+        position="0 3 8" 
+        look-controls 
+        wasd-controls="acceleration: 20">
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
